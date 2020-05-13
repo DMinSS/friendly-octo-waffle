@@ -3,6 +3,7 @@
 
 <head>
     <title>My First Site</title>
+    <link rel="stylesheet" href="styles/styles.css"/>
 </head>
 
 <body>
@@ -77,6 +78,20 @@
             </ol>
         </section>
     </article>
+    <form id="my-form">
+        <fieldset style="color:red">
+            <label for="user_name">Your Name</label>
+            <input type="text" name="user_name" placeholder="Vasya Pupkin" pattern="[A-Za-z]{3,10}" autofocus/>
+        </fieldset>
+        <fieldset>
+            <label for="user_emai">Your Email</label>
+            <input type="email" name="user_email" required placeholder="vasya.p@gmail.com"/>
+        </fieldset>
+
+    </form>
+    <div class="container">
+        <p id="hello">Hello!</p>
+    </div>
     <footer>
         <p>Published on <time datetime="2020-05-08">May, 08</time></p>
     </footer>

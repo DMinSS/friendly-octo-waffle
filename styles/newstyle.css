@@ -1,0 +1,44 @@
+header {
+    font-family: 'Tangerine', serif;
+    font-size: 24px;
+    text-shadow: 4px 4px 4px #aaa;
+    max-width: 1000px;
+    min-width: 500px;
+    height: 150px;
+    background-color: green;
+    margin: 0 auto;
+}
+
+section {
+    max-width: 1000px;
+    min-width: 500px;
+    margin: 0 auto;
+}
+
+nav {
+    width: 200px;
+    height: 450px;
+    background-color: red;
+    float: left;
+}
+
+article {
+    height: 450px;
+    background-color: blue;
+    overflow: scroll;
+}
+
+footer {
+    max-width: 1000px;
+    min-width: 500px;
+    height: 100px;
+    background-color: gray;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration-line: underline;
+    text-decoration-color: white;
+    text-decoration-style: dashed;
+    text-underline-position: under;
+}

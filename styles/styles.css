@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('gilroy_regular.otf');
+}
+
+.container #hello {
+    color: green;
+}
+
+.container {
+    color: blue;
+}
+
+#hello {
+    color: red;
+}
+
+div > p {
+    color: yellow;
+}
+
+p {
+    font-family: 'Gilroy';
+}
+
+fieldset {
+    display: inline;
+}
+
+ul li {
+    display: inline;
+    background-color: #EEE;
+    border: 1px solid;
+}
