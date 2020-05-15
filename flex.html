@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Flexible Child Box</title>
+        <style>
+            div {
+                display: flex;
+                flex-direction: row;
+                outline: 2px solid silver;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+            p {
+                flex: 1 auto; 
+                color: white;
+                background: tomato;
+                max-width: 100px;
+                outline: 1px solid black;
+                box-shadow: 10px 10px 3px gray;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>This is the child 1</p>
+            <p>This is the child 2</p>
+            <p>This is the child 3</p>
+            <p>This is the child 4</p>
+        </div>
+    </body>
+</html>
+

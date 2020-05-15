@@ -15,8 +15,17 @@
     color: red;
 }
 
-div > p {
+p {
     color: yellow;
+    border: medium solid;
+}
+
+b {
+    color: green;
+}
+
+p > b {
+    color: inherit;
 }
 
 p {
@@ -29,6 +38,7 @@ fieldset {
 
 ul li {
     display: inline;
+    box-sizing: border-box;
     background-color: #EEE;
     border: 1px solid;
 }

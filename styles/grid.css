@@ -1,0 +1,68 @@
+header, footer, article, nav, div {
+    padding: 20px;
+    /* background: darkgoldenrod; */
+}
+
+header {
+    /* background: linear-gradient(darkgoldenrod, white); */
+    background: radial-gradient(50% 50%, 70% 70%, white, darkgoldenrod);
+}
+#mainArticle > div {
+    background: darkolivegreen;
+}
+
+#mainArticle > div > div {
+    background: darkmagenta;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 20% 1fr 15%;
+    grid-template-rows: 60px 1fr 60px;
+    grid-gap: 10px;
+    height: 100vh;
+    margin: 0;
+    grid-template-areas: "header header header" "nav article ads" "footer footer footer";
+}
+
+#pageHeader {
+    grid-area: header;
+}
+
+#mainNav {
+    grid-area: nav;
+}
+
+#mainArticle {
+    grid-area: article;
+}
+
+#ads {
+    grid-area: ads;
+}
+
+#pageFooter {
+    grid-area: footer;
+}
+
+/* #childGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+} */
+
+#childGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 575px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px 80px 1fr 50px 70px;
+        grid-template-areas: "nav" "header" "article" "ads" "footer";
+    }
+    #childGrid {
+        flex-direction: column;
+    }
+}
