@@ -1,0 +1,20 @@
+{
+  "name": "friendly-octo-waffle",
+  "version": "1.0.0",
+  "description": "Test project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DMinSS/friendly-octo-waffle.git"
+  },
+  "author": "Dmytro Minochkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DMinSS/friendly-octo-waffle/issues"
+  },
+  "homepage": "https://github.com/DMinSS/friendly-octo-waffle#readme",
+  "dependencies": {}
+}
