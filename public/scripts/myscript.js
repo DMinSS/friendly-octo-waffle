@@ -23,7 +23,9 @@ myBtn.onclick = () => {
         "id": 4,
         "body": "some comment v4",
         "postId": 1
-    }, data => console.log('success'), 'json')
+    }, data => {
+        $('#hello').html(data.body);
+    }, 'json')
 }
 
 btn.addEventListener('click', doSomething, false);

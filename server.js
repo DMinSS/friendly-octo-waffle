@@ -1,35 +1,60 @@
-const fs = require('fs');
-const http = require('http');
-const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+const nodemailer = require("nodemailer");
 
-const hostname = 'localhost';
-const port = 3000;
+const app = express();
 
-const server = http.createServer((req, res) => {
-    if (req.url === '/') {
-        const indexStream = fs.createReadStream('index.html');
-        indexStream.pipe(res);
-    } else if (req.url.match('\.jpg$')) {
-        const imageName = req.url.split('/').pop();
-        const indexStream = fs.createReadStream(path.join(__dirname, 'image', 'cat2.png'));
-        // res.writeHead(200, { "Content-Type": "image/jpeg" });
-        indexStream.pipe(res);
-    } else if (req.url.match('\.css$')) {
-        const styleName = req.url.split('/').pop();
-        const indexStream = fs.createReadStream(path.join(__dirname, 'styles', styleName));
-        // res.writeHead(200, { "Content-Type": "text/css" });
-        indexStream.pipe(res);
-    } else if (req.url.match('\.js$')) {
-        const scriptName = req.url.split('/').pop();
-        const indexStream = fs.createReadStream(path.join(__dirname, 'scripts', scriptName));
-        // res.writeHead(200, { "Content-Type": "text/plain" });
-        indexStream.pipe(res);
-    } else {
-        res.writeHead(404, {"Content-Type": "text/html"});
-        res.end('<h1>Not Found</h1>');
-    }
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(express.static('public'));
+
+app.get('/test', (req, res, next) => {
+    next();
 });
 
-server.listen(port, hostname, () => {
-    console.log(`Server is running at: http://${hostname}:${port}/`);
-})
+app.get('/test', (req, res, next) => {
+    res.end('<h1>Hello!</h1>');
+});
+
+app.get('/profile/:id/:name', (req, res, next) => {
+    res.send(`Hello, you are user ${req.params.name} with # ${req.params.id}`);
+});
+
+app.use('/test', (err, req, res, next) => {
+    res.status(500).send(`Some error: ${err}`);
+});
+
+app.get('/newform', (req, res, next) => {
+    res.sendFile(__dirname + '/public/form/index.html');
+});
+
+app.post('/form', (req, res, next) => {
+    nodemailer.createTestAccount().then(acc => {
+        return nodemailer.createTransport({
+            host: "smtp.ethereal.email",
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+              user: acc.user, // generated ethereal user
+              pass: acc.pass, // generated ethereal password
+            },
+          });
+    }).then(transport => {
+        return transport.sendMail({
+            from: '"Fred Foo 👻" <foo@example.com>', // sender address
+            to: req.body.email, // list of receivers
+            subject: `You got message from ${req.body.name}`, // Subject line
+            text: req.body.message,
+            html: '<h1>Hello!</h1>' // html body
+          })
+    }).then(info => {
+        console.log("Message sent: %s", info.messageId);
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        res.redirect('/');
+    })
+});
+
+app.post('/comments', (req, res, next) => {
+    res.status(200).send(JSON.stringify(req.body, null, 4));
+});
+app.listen(3000);

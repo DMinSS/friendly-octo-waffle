@@ -16,5 +16,9 @@
     "url": "https://github.com/DMinSS/friendly-octo-waffle/issues"
   },
   "homepage": "https://github.com/DMinSS/friendly-octo-waffle#readme",
-  "dependencies": {}
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemailer": "^6.4.8"
+  }
 }
