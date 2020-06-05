@@ -1,0 +1,6 @@
+$my_color: rgb(147, 83, 36);
+
+@mixin my-background-mixin($display) {
+    background-color: #EEE;
+    display: $display;
+}

@@ -1,0 +1,36 @@
+@import "base";
+
+h1 {
+    color: $my_color;
+}
+
+h2 {
+    color: $my_color;
+}
+
+ul {
+    @include my-background-mixin(block);
+
+    li {
+        box-sizing: border-box;
+        border: 1px solid;
+        @include my-background-mixin(inline);
+    }
+}
+
+.message {
+    border: solid 1px $my_color;
+    padding: 10px;
+    color: #333;
+}
+
+
+.success {
+    @extend .message;
+    border-color: green;
+}
+
+.error {
+    @extend .message;
+    border-color: red;
+}
