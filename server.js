@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
 
+const PORT = process.env.PORT || 5000;
+
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -57,4 +59,4 @@ app.post('/form', (req, res, next) => {
 app.post('/comments', (req, res, next) => {
     res.status(200).send(JSON.stringify(req.body, null, 4));
 });
-app.listen(3000);
+app.listen(PORT);
